@@ -5,7 +5,7 @@
 
 An intelligent automation bot that solves multiplication problems in quizzes/games using OCR and precise mouse control.
 
-![Demo Visualization](https://via.placeholder.com/800x400.png?text=Automation+Demo+Screenshot+-+Replace+With+Actual+Image)
+<!-- ![Demo Visualization](https://via.placeholder.com/800x400.png?text=Automation+Demo+Screenshot+-+Replace+With+Actual+Image) -->
 
 ## Features
 
