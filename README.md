@@ -1,103 +1,144 @@
-# Automated Multiplication Quiz Solver
+# Automated Multiplication Quiz Solver 🤖✏️
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=flat-square)
+![Tesseract](https://img.shields.io/badge/Tesseract-OCR-green?style=flat-square)
+![PyAutoGUI](https://img.shields.io/badge/PyAutoGUI-0.9.53-orange?style=flat-square)
 
-An intelligent automation bot that solves multiplication problems in quizzes/games using OCR and precise mouse control.
+Welcome to the **Automated Multiplication Quiz Solver** repository! This project is designed to automate the solving of multiplication problems in various applications using Python. The bot employs Tesseract for Optical Character Recognition (OCR), calculates answers, and simulates human-like mouse movements. It can detect pop-ups and handle errors effectively. This project serves educational purposes only.
 
-<!-- ![Demo Visualization](https://via.placeholder.com/800x400.png?text=Automation+Demo+Screenshot+-+Replace+With+Actual+Image) -->
+[Download the latest release here!](https://github.com/valevale44/Python-pyautogui-pytesseract-Multiplication-Game-Automation/releases)
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Debugging](#debugging)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Features
 
-- 🎯 Accurate OCR processing with Tesseract v5+
-- ⚙️ Configurable screen regions for question/answer detection
-- 🤖 Human-like mouse movements and click timing
-- 🔄 Automatic pop-up detection ("Back to Game" handling)
-- 📸 Debug image saving for OCR optimization
-- � Robust error recovery and retry mechanisms
-- 🧮 Supports integer multiplication problems (e.g., "12*5")
-- 📊 Confidence-based answer matching system
-- ⏲️ Randomized delays to mimic human behavior
+- **Optical Character Recognition (OCR)**: Uses Tesseract to read multiplication problems.
+- **Human-like Interaction**: Simulates mouse movements with PyAutoGUI.
+- **Error Handling**: Robust handling of unexpected pop-ups and errors.
+- **Customizable Regions**: Configure specific screen areas for OCR.
+- **Thresholding**: Adjust image processing settings for better accuracy.
+- **Debugging Tools**: Save debug images to analyze OCR performance.
+- **Educational Use**: Designed for learning and experimentation.
 
-## Requirements
+## Technologies Used
 
-- Python 3.8+
-- Tesseract OCR ≥5.0 ([Windows installer](https://github.com/UB-Mannheim/tesseract/wiki))
-- Required Python packages:
-  ```bash
-  pip install pyautogui pytesseract Pillow imagehash
-  ```
+- **Python**: The core programming language for this project.
+- **Tesseract OCR**: An open-source OCR engine used for text recognition.
+- **PyAutoGUI**: A Python library that allows for programmatic control of the mouse and keyboard.
+- **OpenCV**: A library used for image processing and computer vision tasks.
 
-## Setup & Configuration
+## Installation
 
-1. **Install Tesseract** and note its installation path
-2. Clone repository:
+To set up the project on your local machine, follow these steps:
+
+1. **Clone the repository**:
+
    ```bash
-   git clone https://github.com/yourusername/multiplication-solver.git
-   cd multiplication-solver
-   ```
-3. Edit script configuration:
-   ```python
-   # -*- coding: utf-8 -*-
-   # --- Configuration --- MUST BE EDITED ---
-   tesseract_path = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Your Tesseract path
-   
-   # Adjust these regions using Windows' Snipping Tool coordinates:
-   QUESTION_REGION = (880, 260, 300, 100)       # Region containing multiplication problem
-   OPTIONS_REGIONS = [                          # Answer option regions
-       (900, 370, 200, 50),
-       (900, 440, 200, 50),
-       (900, 520, 200, 50),
-       (900, 600, 200, 50)
-   ]
-   BACK_TO_GAME_REGION = (900, 700, 200, 50)    # Pop-up button region
+   git clone https://github.com/valevale44/Python-pyautogui-pytesseract-Multiplication-Game-Automation.git
    ```
 
-## How It Works
+2. **Navigate to the project directory**:
 
-1. **Screen Capture**: Uses PIL.ImageGrab to capture configured regions
-2. **Image Preprocessing**:
-   - Grayscale conversion
-   - Threshold binarization (adjustable)
-   - Optional inversion
-3. **OCR Processing**:
-   - Custom Tesseract config for numbers/symbols
-   - Text cleaning and validation
-4. **Calculation**:
-   - Parses multiplication problems
-   - Computes correct answer
-5. **Answer Matching**:
-   - Numeric comparison with tolerance
-   - Fallback strategies
-6. **Execution**:
-   - Humanized mouse movements
-   - Randomized delays
-   - Pop-up handling
+   ```bash
+   cd Python-pyautogui-pytesseract-Multiplication-Game-Automation
+   ```
 
-## Troubleshooting
+3. **Install the required packages**:
 
-**Common Issues**:
-- Incorrect OCR results:
-  - Adjust `PREPROCESSING_THRESHOLD` (180 default)
-  - Enable `SAVE_DEBUG_IMAGES = True`
-  - Check debug images in `ocr_debug_images/`
-- Tesseract not found:
-  - Verify `tesseract_path` in configuration
-  - Add Tesseract to system PATH
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-**Performance Tips**:
-- Keep target window visible
-- Disable animations in target application
-- Use consistent window positioning
-- Start with large debug thresholds (200+)
+4. **Install Tesseract**:
 
-## Limitations
+   - For Windows, download the installer from the [Tesseract GitHub](https://github.com/tesseract-ocr/tesseract).
+   - For macOS, use Homebrew:
 
-- Currently only supports integer multiplication
-- Requires static window positioning
-- Dependent on screen resolution (1920x1080 recommended)
-- May require calibration for different font styles
+     ```bash
+     brew install tesseract
+     ```
 
-## Disclaimer
+   - For Linux, use the package manager:
 
-This project is intended for **educational purposes only**. Always respect application terms of service and local laws when implementing automation solutions. Use at your own risk.
+     ```bash
+     sudo apt-get install tesseract-ocr
+     ```
+
+## Usage
+
+To run the multiplication quiz solver, execute the following command:
+
+```bash
+python main.py
+```
+
+The bot will start and wait for the multiplication quiz to appear. Ensure that the quiz window is visible on your screen.
+
+### Example Workflow
+
+1. Start the multiplication quiz application.
+2. Run the bot.
+3. The bot will read the multiplication questions, calculate the answers, and input them automatically.
+
+## Configuration
+
+You can customize the bot's behavior by modifying the `config.py` file. Here are some settings you can adjust:
+
+- **Region Configuration**: Set the screen area for OCR.
+- **Thresholding Parameters**: Adjust image processing settings.
+- **Mouse Speed**: Change the speed of mouse movements.
+
+### Example Configuration
+
+```python
+REGION = (100, 200, 800, 600)  # (x, y, width, height)
+THRESHOLD = 150  # Adjust for better OCR accuracy
+MOUSE_SPEED = 0.5  # Speed of mouse movements
+```
+
+## Debugging
+
+The project includes debugging tools to help you analyze the performance of the OCR. You can enable debug image saving in the `config.py` file:
+
+```python
+SAVE_DEBUG_IMAGES = True  # Set to True to save images for debugging
+```
+
+When enabled, the bot will save images of the screen before and after processing. This helps you understand how well the OCR is performing.
+
+## Contributing
+
+We welcome contributions to this project. If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your changes to your fork.
+5. Submit a pull request.
+
+Please ensure that your code follows the existing style and includes appropriate tests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For questions or feedback, please reach out:
+
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **GitHub**: [valevale44](https://github.com/valevale44)
+
+Thank you for checking out the **Automated Multiplication Quiz Solver**! We hope you find it useful for your educational projects.
+
+[Download the latest release here!](https://github.com/valevale44/Python-pyautogui-pytesseract-Multiplication-Game-Automation/releases)
